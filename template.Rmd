@@ -71,7 +71,8 @@ ggplot(mpg) +
   geom_point(color = colors$blue) +
   labs(title="Displacement by Manufacturer",
        subtitle="Subtitle",
-       caption="Dots are in RWTH Color") + theme_bw(base_size = 14)
+       caption="Dots are in RWTH Color") + 
+  theme_bw(base_size = 14)
 
 ```
 
