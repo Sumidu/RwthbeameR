@@ -10,6 +10,7 @@ titletype.plain: TRUE
 
 output: 
   beamer_presentation:
+    df_print: kable
     latex_engine: xelatex  
     template: main.tex
     pandoc_args: [
@@ -19,19 +20,58 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, fig.height = 4.5)
+library(tidyverse)
+library(rwththeme)
+colors <- hcictools::rwth.colorpalette()
 ```
 
-# This is the slide title
-## This is the slide subtitle
+# This is the section title
+## This is the slide title
 This is a test
 
 - This too
 - This also
 
-# Ok
-## New Slide
+  - This is a subitem
+
+    - This is a subsubitem
+
+# Headline and Figure only
+##
+\begin{figure}
+\includegraphics[width=\textwidth]{title_large}
+\caption{Image description}
+\end{figure}
+
+
+# Basic R Output 
+## This is basic output
 ```{r}
 rnorm(1,100)
+```
+
+# Table Example
+## This is a table
+```{r echo=TRUE}
+mpg %>% select(1:3) %>% head() 
+```
+
+
+## This is a table
+```{r echo=TRUE}
+mpg %>% select(1:3) %>% tail()
+```
+
+# ggplot-Test
+## Result
+```{r}
+ggplot(mpg) + 
+  aes(x = manufacturer, y = displ) + 
+  geom_point(color = colors$blue) +
+  labs(title="Displacement by Manufacturer",
+       subtitle="Subtitle",
+       caption="Dots are in RWTH Color") + theme_bw(base_size = 14)
+
 ```
 
