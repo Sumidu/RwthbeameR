@@ -1,0 +1,111 @@
+% This file provides an example Beamer presentation using the RWTH theme
+% showcasing some of the more common options, similar to the Powerpoint version
+% 12.11.2014: Revision 1 (Harold Bruintjes, Tim Lange)
+
+% For RWTH, beamer should be loaded with class option t (top)
+\documentclass[t]{beamer}
+
+% Use fontspec to get Arial font
+% Requires use of XeLaTeX
+\usepackage{fontspec}
+\setmainfont{Arial}
+\setsansfont{Arial}
+% Also force Arial for math for a more consistent look
+\usepackage{unicode-math}
+\setmathfont{Arial}
+
+% German style date formatting (footer)
+\usepackage[ddmmyyyy]{datetime}
+\renewcommand{\dateseparator}{.}
+
+% Format the captions used for figures etc.
+\usepackage[compatibility=false]{caption}
+\captionsetup{singlelinecheck=off,justification=raggedleft,labelformat=empty,labelsep=none}
+
+% PGFPlots is used for drawing some of the charts
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\input{plot_commands.tex}
+
+% Load the actual RWTH theme. Suggested is to load the full theme,
+% as it requires some specific dimensions
+\usetheme{rwth}
+
+% Setup presentation information
+\title{$title$}
+\subtitle{$subtitle$}
+\date[RWTH]{$event$\enskip|\enskip\today}
+\author[Max]{$author$ $email$}
+\institute[RWTH]{RWTH Aachen University}
+
+% Set the logo to the file `logo`
+% It will be scaled automatically
+\logo{\includegraphics{logo}}
+
+% Uncomment this if you want a TOC at every section start
+%\AtBeginSection{\frame{
+%    \frametitle{Content}
+%    \tableofcontents[currentsection]
+%}}
+
+% Use this to control some aspects of the footer
+\setbeamertemplate{footertextextra}{$footer-text$}
+%\setbeamertemplate{footertext}{Example of an overridden footer}
+
+\begin{document}
+
+$if(titletype.plain)$
+% Note: Title pages should be created as plain
+% Title page with a blue bar
+\setbeamercolor{title page bar}{fg=rwth}
+\setbeamertemplate{title page}[rwth]{}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+$endif$
+
+% Title page with a 1/3rd size picture
+\setbeamercolor{title page bar}{fg=white}
+\setbeamertemplate{title page}[rwth][title_small]{}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+% Title page with a 2/3rd size picture
+\setbeamertemplate{title page}[rwth2][title_large]{}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+% Title page with a separator line at the bottom
+\setbeamertemplate{title page}[rwth3][unten]{}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+% Title page with a separator line between title and subtitle
+\setbeamertemplate{title page}[rwth3]{}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+
+
+$body$
+
+$if(biblatex)$
+$if(beamer)$
+\begin{frame}[allowframebreaks]{$biblio-title$}
+  \bibliographytrue
+  \printbibliography[heading=none]
+\end{frame}
+$else$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
+
+$endif$
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}
