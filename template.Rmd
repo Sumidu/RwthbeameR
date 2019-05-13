@@ -6,7 +6,8 @@ event: "Conference Name"
 email: "calero-valdez@comm.rwth-aachen.de"
 footer-text: "Extra text in the footer"
 date: "`r Sys.Date()`"
-titletype.plain: "TRUE"
+titletype.plain: TRUE
+
 output: 
   beamer_presentation:
     latex_engine: xelatex  
@@ -24,6 +25,7 @@ knitr::opts_chunk$set(echo = FALSE)
 # This is the slide title
 ## This is the slide subtitle
 This is a test
+
 - This too
 - This also
 

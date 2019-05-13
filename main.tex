@@ -27,6 +27,10 @@
 \pgfplotsset{compat=newest}
 \input{plot_commands.tex}
 
+% Commands from Pandoc
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 % Load the actual RWTH theme. Suggested is to load the full theme,
 % as it requires some specific dimensions
 \usetheme{rwth}
@@ -40,7 +44,7 @@
 
 % Set the logo to the file `logo`
 % It will be scaled automatically
-\logo{\includegraphics{logo}}
+\logo{\includegraphics{hcic}}
 
 % Uncomment this if you want a TOC at every section start
 %\AtBeginSection{\frame{
@@ -54,7 +58,6 @@
 
 \begin{document}
 
-$if(titletype.plain)$
 % Note: Title pages should be created as plain
 % Title page with a blue bar
 \setbeamercolor{title page bar}{fg=rwth}
@@ -62,32 +65,8 @@ $if(titletype.plain)$
 \begin{frame}[plain]
 \titlepage
 \end{frame}
-$endif$
 
-% Title page with a 1/3rd size picture
-\setbeamercolor{title page bar}{fg=white}
-\setbeamertemplate{title page}[rwth][title_small]{}
-\begin{frame}[plain]
-\titlepage
-\end{frame}
 
-% Title page with a 2/3rd size picture
-\setbeamertemplate{title page}[rwth2][title_large]{}
-\begin{frame}[plain]
-\titlepage
-\end{frame}
-
-% Title page with a separator line at the bottom
-\setbeamertemplate{title page}[rwth3][unten]{}
-\begin{frame}[plain]
-\titlepage
-\end{frame}
-
-% Title page with a separator line between title and subtitle
-\setbeamertemplate{title page}[rwth3]{}
-\begin{frame}[plain]
-\titlepage
-\end{frame}
 
 
 
